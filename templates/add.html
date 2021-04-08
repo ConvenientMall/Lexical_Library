@@ -1,0 +1,15 @@
+[[extend 'layout.html']]
+
+<div class="section">
+
+  <div>Enter product name:</div>
+  <div>
+    <form action="[[=URL('add')]]" method="POST">
+      <div class="field">
+        <input class="input" type="text" name="product_name" placeholder="Write product here" />
+      </div>
+      <input type="submit" class="button" value="Submit" />
+    </form>
+  </div>
+
+</div>
