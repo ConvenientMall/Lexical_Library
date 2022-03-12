@@ -34,13 +34,13 @@ from .models import get_user_email
 url_signer = URLSigner(session)
 
 @action('index')
-@action.uses(db, auth, 'index.html')
+@action.uses('index.html', db, auth)
 def index():
     print("User:", get_user_email())
     return dict()
 
 @action('add', method=["GET", "POST"])
-@action.uses(db, auth.user, 'add.html')
+@action.uses('add.html', db, auth.user)
 def add():
     if request.method == "GET":
         return dict()
