@@ -1,5 +1,66 @@
-[[extend 'layout.html']]
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <base href="[[=URL('static')]]/">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;base64,AAABAAEAAQEAAAEAIAAwAAAAFgAAACgAAAABAAAAAgAAAAEAIAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAA=="/>
+    <link rel="stylesheet" href="css/bulma.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+   </head>
+   <style>
+      * {
+        font-family: "Dosis", sans-serif;
+      }
+      main { 
+        position: fixed; width: 100vw; height: 100vh;
+        background: #C188BB;
+        background: linear-gradient(57deg, #C188BB 0%, #15497B 100%);
+        color: white; text-align: center; }
+        
+        main a {color: white;text-decoration:none;font-weight:bold;padding:10px 10px;border-radius:10px;border:2px solid white; transition: all .5s ease} 
+        main a:hover{background:rgba(88, 87, 87,.01);padding:10px 30px}
+   </style>
+   <body>
+      <main>
+         <div class="section">
+            <center>
+               <div class="block">
+                  <img style="width:15%" src="assets/Lexical_logo.svg"></img>
+                </div>
+            <h1 class="title has-text-light">Lexical Library</h1>
+            <p class="subtitle is-3 has-text-light"><i>lek-si-kuhl laɪ-breri</i></p>
+            <p class="subtitle is-3 has-text-light">Conlang Vocabulary Documentation Tool</p>
 
-<div class="section">
-   Hello.
-</div>
+            <div class="buttons is-centered">
+               <div><a href="[[=URL('user_dictionaries')]]">Dictionaries</a></div>
+               &nbsp;
+                     
+               [[if globals().get('user'):]]
+               <div><a href="[[=URL('auth/profile')]]">Profile</a></div>
+               &nbsp;
+                       
+               <div><a href="[[=URL('auth/logout')]]">Logout</a></div>
+               &nbsp;
+                       
+               <div><a href="[[=URL('auth/change_password')]]">Change Password</a></div>
+               [[else:]]
+                 <div><a href="[[=URL('auth/register')]]">Sign up</a></div>
+                 &nbsp;
+                       
+                 <div><a href="[[=URL('auth/login')]]">Log in</a></div>
+                       
+               [[pass]]
+            </div>
+
+            </center>
+         </div>
+      </main>
+   </body>
+
+   <script src="js/sugar.min.js"></script>
+   <script src="js/axios.min.js"></script>
+   <script src="js/vue.js"></script>
+   <script src="js/utils.js"></script>
+
+</html>

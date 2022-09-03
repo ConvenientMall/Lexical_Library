@@ -1,0 +1,170 @@
+[[extend 'layout.html']]
+
+<style>
+[v-cloak] {
+     display: none;
+}
+
+h1 {
+      font-size:50px;
+      line-height:50px;
+    }
+
+  * {
+    font-family: "Dosis", sans-serif;
+  }
+
+</style>
+
+<div class="section" id="vue-target" v-cloak>
+
+  {{set_dictionary_filter("[[=dictionary_id]]")}}
+  {{set_current_dictionary("[[=dictionary_id]]")}}
+  <div class="container block">   
+      <h1>
+        <center>{{current_dictionary.title}}</center>
+      </h1>
+      <center><h3 style="color:rgb(158, 149, 149);">{{current_dictionary.text}}</h3></center>
+  </div>
+
+
+  <div class="container block">
+
+    <div v-if="add_mode" class="container block">
+      <div class="form">
+        <div class="field">
+            <div class="control">
+              <label class="label">Word</label>
+              <div><input  style="width:30%" class="input" type="text" placeholder="Enter Word" v-model="add_word"></div>
+              <label class="label">Position</label>
+              <div><input  style="width:30%" class="input" type="text" placeholder="Enter Position" v-model="add_position"></div>
+              <label class="label">English</label>
+              <div><input  style="width:30%" class="input" type="text" placeholder="Enter English Equivlent" v-model="add_english"></div>
+
+              <label class="label">Definition</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Definition" v-model="add_definition"></textarea>
+              </div>
+    
+              <label class="label">Other</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="Other" v-model="add_other"></textarea>
+                &nbsp;
+              </div>
+    
+            </div>
+            <div class="field">
+            <div class="control">
+              <input type="submit" @click="publish" value="Add" class="button is-primary">
+              <input type="submit" @click="set_add_status(false)" value="Cancel" class="button is-warning">
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-else>
+
+      <div v-if="edit_mode" class="container block">
+        <div class="form">
+          <div class="field">
+            <div class="control">
+              <label class="label">Title</label>
+              <div><input  style="width:30%" class="input" type="text" placeholder="Title" v-model="edit_title" placeholder="New Title"></div>
+              <label class="label">Description</label>
+              <div class="control">
+                <textarea class="textarea" placeholder="New Dictionary description" v-model="edit_text"></textarea>
+              </div>
+
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox" v-model="edit_public">
+                  public
+                </label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <input type="submit" @click="edit" value="Update" class="button is-primary">
+                <input type="submit" @click="set_edit_status(false)" value="Cancel" class="button is-warning">
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-else>
+
+        <div class="columns">
+          <div class="column">
+            <button @click="set_add_status(true)" class="button is-primary" v-if="user_mode">
+              <i class="fa fa-plus fa-fw"></i>
+            </button>
+            <button @click="set_edit_status(true)" class="button is-primary" v-if="user_mode">
+              <i class="fa fa-gear fa-fw"></i>
+            </button>
+          </div>
+          <div class="column">
+            <input class="input" type="text" placeholder="Enter Word" v-model="search_Query">
+          </div>
+          <div class="column">
+            <button @click="search()" class="button is-primary">
+              <i class="fa fa-search fa-fw"></i>
+            </button>
+          </div>
+
+        </div>
+        
+      </div>
+
+    </div>
+
+
+  </div>
+
+  
+
+  <div v-for="p in display_words" >
+    <div style="margin-top:2em;">
+    <div class="container">
+      <div class="box">
+
+          <font size="+3" style="color:black;">
+            {{p.word}}
+          </font>v-if
+          <i @click="delete_word(p._idx)" v-if="user_mode">
+            <i class="fa fa-trash fa-lg fa-fw is-pulled-right" style="color:rgb(197, 20, 14)"></i>
+          </i>
+          <p style="color:gray;">english:{{p.english}}</p>
+          <p style="color:gray;">[{{p.position}}]</p>
+          <p style="color:gray;">{{p.definition}}</p>
+          &nbsp;
+          <p style="color:gray;">{{p.other}}</p>
+      </div>
+      
+    </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+[[block page_scripts]]
+<!-- Loads the index-specific js for Vue -->
+<script>
+    let load_words_url = "[[=XML(load_words_url)]]";
+    let load_personal_dictionaries_url = "[[=XML(load_personal_dictionaries_url)]]";
+    let load_dictionaries_url = "[[=XML(load_dictionaries_url)]]";
+    let load_username_url = "[[=XML(load_username_url)]]";
+    let load_email_url = "[[=XML(load_email_url)]]";
+    let add_word_url = "[[=XML(add_word_url)]]";
+    let delete_word_url = "[[=XML(delete_word_url)]]";
+    let edit_dictionary_url = "[[=XML(edit_dictionary_url)]]";
+</script>
+<script src="js/dictionary.js"></script>
+[[end]]

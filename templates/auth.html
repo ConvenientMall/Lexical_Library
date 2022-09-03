@@ -13,8 +13,23 @@
   a.button {
       margin-left: 10px;
   }
+  post { 
+      background: #C188BB;
+      background: linear-gradient(57deg, #C188BB 0%, #15497B 100%);
+      color: white; text-align: center; 
+      border-radius:10px;
+      border:2px solid white;}
 </style>
-
 <section class="section">
-  [[=form]]
+	<div class="columns is-mobile">
+		<div class="column"></div>
+		<post class="column is-one-thirds">
+      <div class="box has-background-light">
+        <p>[[=form]]</p>
+      </div>
+
+		</post>
+
+		<div class="column"></div>
+	</div>
 </section>
