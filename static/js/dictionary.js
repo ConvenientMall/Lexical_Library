@@ -178,7 +178,6 @@ let init = (app) => {
     // This contains all the methods.
     app.methods = {
         search: app.search,
-        filteredWords: app.filteredWords,
         set_alpha_status: app.set_alpha_status,
         set_edit_status: app.set_edit_status,
         edit: app.edit,

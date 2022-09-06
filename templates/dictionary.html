@@ -14,7 +14,9 @@ h1 {
     font-family: "Dosis", sans-serif;
   }
 
+
 </style>
+
 
 <div class="section" id="vue-target" v-cloak>
 
@@ -26,6 +28,7 @@ h1 {
       </h1>
       <center><h3 style="color:rgb(158, 149, 149);">{{current_dictionary.text}}</h3></center>
   </div>
+
 
 
   <div class="container block">
@@ -108,7 +111,7 @@ h1 {
             </button>
           </div>
           <div class="column">
-            <input class="input" type="text" placeholder="Enter Word" v-model="search_Query">
+            <input class="input" type="text" placeholder="Search" v-model="search_Query">
           </div>
           <div class="column">
             <button @click="search" class="button is-primary">
@@ -151,8 +154,8 @@ h1 {
 
 
 
-
 </div>
+
 
 [[block page_scripts]]
 <!-- Loads the index-specific js for Vue -->
