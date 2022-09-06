@@ -92,7 +92,6 @@ def load_personal_dictionaries():
 @action('load_email')
 @action.uses(url_signer.verify(), db)
 def load_email():
-    print("aqqq")
     email = auth.current_user.get('email')
     return dict(email=email)
 

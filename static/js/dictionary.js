@@ -1,5 +1,6 @@
 // This will be the object that will contain the Vue attributes
 // and be used to initialize it.
+
 let app = {};
 
 // Given an empty app object, initializes it filling its attributes,
