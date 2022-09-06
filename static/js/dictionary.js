@@ -81,6 +81,21 @@ let init = (app) => {
         });
     };
 
+    app.search = function () {
+        if(app.vue.search_Query == ""){
+            app.vue.display_words = app.vue.words;
+        }
+        else{
+            app.vue.display_words =  app.vue.words.filter(function(word) {
+                return word.english.toLowerCase().includes(app.vue.search_Query.toLowerCase())
+                + word.other.toLowerCase().includes(app.vue.search_Query.toLowerCase())
+                + word.word.toLowerCase().includes(app.vue.search_Query.toLowerCase())
+                + word.definition.toLowerCase().includes(app.vue.search_Query.toLowerCase())
+                + word.position.toLowerCase().includes(app.vue.search_Query.toLowerCase())
+              });
+        }
+    };
+
     app.reset_form = function () {
         app.vue.add_mode = false;
         app.vue.add_word = "";
@@ -162,6 +177,7 @@ let init = (app) => {
 
     // This contains all the methods.
     app.methods = {
+        search: app.search,
         filteredWords: app.filteredWords,
         set_alpha_status: app.set_alpha_status,
         set_edit_status: app.set_edit_status,
