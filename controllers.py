@@ -24,14 +24,28 @@ The path follows the bottlepy syntax.
 session, db, T, auth, and tempates are examples of Fixtures.
 Warning: Fixtures MUST be declared with @action.uses({fixtures}) else your app will result in undefined behavior
 """
+from nqgcs import NQGCS
 
 from py4web import action, request, abort, redirect, URL
 from yatl.helpers import A
 from .common import db, session, T, cache, auth, logger, authenticated, unauthenticated, flash
 from py4web.utils.url_signer import URLSigner
 from .models import get_user_email
+from .settings import APP_FOLDER
+from .gcs_url import gcs_url
 
 url_signer = URLSigner(session)
+
+BUCKET = '/Lexical_Libary'
+
+
+GCS_KEY_PATH = os.path.join(
+    APP_FOLDER, 'private/lexicallibary-a7fc05f5fa13.json')
+with open(GCS_KEY_PATH) as gcs_key_f:
+    GCS_KEYS = json.load(gcs_key_f)
+
+# I create a handle to gcs, to perform the various operations.
+gcs = NQGCS(json_key_path=GCS_KEY_PATH)
 
 @action('index')
 @action.uses('index.html', db, auth)

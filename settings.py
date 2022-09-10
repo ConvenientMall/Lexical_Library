@@ -19,6 +19,17 @@ DB_POOL_SIZE = 1
 DB_MIGRATE = True
 DB_FAKE_MIGRATE = False  # maybe?
 
+# Google Cloud Database
+CLOUD_DB_URI = "google:MySQLdb://{DB_USER}:{DB_PASSWORD}@/{DB_NAME}?unix_socket=/cloudsql/{DB_CONNECTION}".format(
+    DB_USER="appuser",
+    DB_NAME="db1",
+    DB_PASSWORD="123",
+    DB_CONNECTION="finishmyart:us-west2:finishmyart-deployment-db-1"
+)
+CLOUD_DB_POOL_SIZE = 1
+CLOUD_DB_MIGRATE = False # IMPORTANT!
+CLOUD_DB_FAKE_MIGRATE = False
+
 # location where static files are stored:
 STATIC_FOLDER = required_folder(APP_FOLDER, "static")
 
