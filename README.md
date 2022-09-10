@@ -8,6 +8,7 @@ Py4web and vue.js needed.
 
 ## Deployment
 <sub>Taken from [py4web documentation](https://py4web.com/_documentation/static/en/chapter-03.html)</sub>
+
 Login into the Gcloud console and create a new project. You will obtain a project id that looks like “{project_name}-{number}”.
 
 In your local file system make a new working folder and cd into it:
