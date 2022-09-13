@@ -48,3 +48,4 @@ You may want to customize the Makefile and app.yaml to suit your needs. You shou
 ## Built With
 * [py4web](https://py4web.com/_documentation/static/en/chapter-01.html) - The web framework used
 * [vue.js](https://vuejs.org/guide/introduction.html) - JavaScript framework used
+* [bulma](https://bulma.io/) - CSS framework used
